@@ -1,0 +1,47 @@
+<div style="margin-left: 10px;">
+    <h1>System of linear equations solver.</h1>
+
+    <b>Choose a method: </b>
+    <select #methodsSel (change)="changeMethod()">
+        <option value="Gauss-Elimination">Gauss-Elimination</option>
+        <option value="Gauss-Jordan">Gauss-Jordan</option>
+        <option value="LU-Decomposition">LU-Decomposition</option>
+        <option value="Gauss-Seidil">Gauss-Seidil</option>
+        <option value="Jacobi-Iteration">Jacobi-Iteration</option>
+    </select>
+
+    <br><br>
+    <b>System of linear equations:</b>
+    <br>
+    <textarea #equationsInp required placeholder="x + y + z = 0&#10;x - 2y + 3z = -2&#10;3x - 2y + z = 5" cols="30" rows="8"></textarea>
+    <br><br>
+
+    <div #luDiv>
+        <b>Choose a form: </b>
+        <select #formsSel (change)="changeForm()">
+            <option value="Downlittle-Form">Downlittle-Form</option>
+            <option value="Crout-Form">Crout-Form</option>
+        </select>
+    </div>
+
+    <div #iterationDiv>
+        <b>Initial guess:</b>
+        <br>
+        <textarea #initialGuessInp required placeholder="x = 1&#10;y = 5&#10;z = -4" cols="30" rows="8"></textarea>
+        <br><br>
+        <b>Stopping conditions:</b>
+        <br>
+        <b>Maximum number of iterations: </b>
+        <input #iterationsInp (change) = "changeIterations()" type="number" placeholder="Default 50">
+        <br>
+        <b>Minimum relative error (%): </b>
+        <input #errorInp (change) = "changeError()" type="number" placeholder="Default 20">
+    </div>
+
+    <input #precisionChb (click) = "togglePrecisionNum()" style="padding: 0px; margin: 0px;" type = "checkbox"><b> Precision: </b><input (change) = "changePrecision()" #precisionNum type="number" placeholder="Default 5">
+    <br><br>
+    <button (click) = "solve()">Solve</button>
+    <br>
+    <br>
+    <textarea #resultTxt readonly cols="30" rows="8"></textarea>
+</div>

@@ -1,0 +1,7 @@
+<b style="margin-left: 10px; margin-top: 10px;">Choose solving mode: </b>
+<select #equationsSystemSel (change)="changeEquationsSystem(equationsSystemSel.value)" style="margin-top: 10px;">
+    <option value="linear">System of linear equations</option>
+    <option value="non-linear">Non-linear equation root finder</option>
+</select>
+<div id="root"></div>
+<router-outlet></router-outlet>

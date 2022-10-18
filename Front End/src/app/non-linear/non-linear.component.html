@@ -1,0 +1,52 @@
+<div style="margin-left: 10px;">
+    <h1>Non-linear equation root finder.</h1>
+
+    <b>Choose a method: </b>
+    <select #methodsSel (change)="changeMethod(methodsSel.value)">
+        <option value="Bisection">Bisection</option>
+        <option value="False-Position">False-Position</option>
+        <option value="Fixed-point">Fixed-point</option>
+        <option value="Newton-Raphson">Newton-Raphson</option>
+        <option value="Secant-Method">Secant-Method</option>
+    </select>
+
+    <br><br>
+    <b>Non-linear equation:</b>
+    <br>
+    <input #equationInp type="text" placeholder="x^2 + 2x + 3">
+    <br>
+
+    <div>
+        <b #firstPointB>Lower bound point: </b>
+        <input #firstPointInp type="text" placeholder="0.5">
+    </div>
+    <div #secondPointDiv>
+        <b #secondPointB>Upper bound point: </b>
+        <input #secondPointInp type="text" placeholder="2">
+    </div>
+
+    <br><br>
+    <div>
+        <b>Stopping conditions:</b>
+        <br>
+        <b>Maximum number of iterations: </b>
+        <input #iterationsInp (change) = "changeIterations(iterationsInp.value)" type="number" placeholder="Default 50">
+        <br>
+        <b>Minimum relative error: </b>
+        <input #errorInp (change) = "changeError(errorInp.value)" type="number" placeholder="Default 0.00001">
+        <br>
+        <b> Significant figures: </b>
+        <input #SGFInp (change) = "changeSGF(SGFInp.value)" type="number" placeholder="Default 16">
+    </div>
+
+    <br><br>
+    <button (click) = "solve(equationInp.value, firstPointInp.value, secondPointInp.value)">Solve</button>
+    <br>
+    <br>
+    <textarea #resultTxt readonly cols="30" rows="2"></textarea>
+    <div *ngIf="method=='Bisection'" id="Bisection"></div>
+    <div *ngIf="method=='False-Position'" id="False-Position"></div>
+    <div *ngIf="method=='Secant-Method'" id="Secant-Method"></div>
+    <div *ngIf="method=='Fixed-point'" id="Fixed-point"></div>
+    <div *ngIf="method=='Newton-Raphson'" id="Newton-Raphson"></div>
+</div>
